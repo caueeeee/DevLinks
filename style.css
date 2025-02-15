@@ -25,7 +25,6 @@
 
 body {
     background: var(--bg-url) no-repeat top center/cover;
-    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
     height: 100vh;
 }
 
@@ -54,8 +53,6 @@ body * {
     width: 112px;
     border-radius: 50%;
     border: 3px solid rgb(0, 0, 20);
-    transition: opacity 0.4s ease-in-out;
-    opacity: 1;
 }
 
 #profile p {
@@ -86,12 +83,16 @@ body * {
     left: 0;
     z-index: 1;
     transform:translateY(-50%) ;
+
+    animation: slide-back .2s ;
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button{
-    right: 0;
-    left: initial;
-   
+   animation: slide-in .3s forwards;
 }
 
 #switch span {
@@ -183,5 +184,23 @@ footer {
 
     .light{
         --bg-url: url(assets/bg-desktop-light.jpg);
+    }
+}
+
+@keyframes slide-in{
+    from{
+        left: 0;
+    }
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slide-back{
+    from{
+        left: 50%;
+    }
+    to{
+        left: 0;
     }
 }
